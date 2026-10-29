@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usifer Ferramentaria — Precisão desde 2004</title>
+<meta name="description" content="Usinagem técnica de precisão em Joinville-SC desde 2004. Dispositivos, ferramental para tubos, controle de qualidade com certificação RBC e medição 3D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#120d0a;
+  --bg-soft:#1a1310;
+  --bg-card:#201712;
+  --line:rgba(255,255,255,0.1);
+  --line-soft:rgba(255,255,255,0.06);
+  --text:#f6f3f0;
+  --muted:#aca49c;
+  --muted-soft:#766e66;
+  --spark:#E8542A;
+  --spark-2:#FFA26B;
+  --spark-soft:rgba(232,84,42,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.wordmark,.stat-num,.hist-year{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1220px;margin:0 auto;padding:0 32px;}
+img{max-width:100%;display:block;}
+
+/* ---------- NAV ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 0;
+  transition:background .3s ease, border-color .3s ease, padding .3s ease;
+  border-bottom:1px solid transparent;
+}
+header.scrolled{
+  background:rgba(12,9,7,0.92);
+  backdrop-filter:blur(10px);
+  border-color:var(--line);
+  padding:13px 0;
+}
+nav{display:flex;align-items:center;justify-content:space-between;}
+.wordmark{font-size:22px;letter-spacing:.5px;display:flex;flex-direction:column;line-height:1;}
+.wordmark span{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-top:5px;}
+footer .wordmark{font-size:26px;}
+.nav-links{display:flex;gap:34px;align-items:center;}
+.nav-links a{font-size:13px;color:var(--muted);transition:color .2s;font-weight:600;letter-spacing:.8px;text-transform:uppercase;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{
+  background:var(--spark);color:#0a0a0b;font-weight:700;font-size:13px;
+  padding:12px 22px;letter-spacing:.5px;text-transform:uppercase;
+  transition:filter .2s, transform .2s;
+}
+.nav-cta:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:22px;cursor:pointer;}
+.mobile-menu{
+  position:fixed;inset:0;background:var(--bg);z-index:101;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  transform:translateY(-100%);transition:transform .35s ease;
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-size:24px;font-family:'Anton',sans-serif;letter-spacing:.5px;}
+.mobile-close{position:absolute;top:24px;right:32px;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer;}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding-top:110px;padding-bottom:60px;
+  background:
+    linear-gradient(90deg, rgba(12,9,7,0.97) 0%, rgba(12,9,7,0.88) 32%, rgba(12,9,7,0.5) 62%, rgba(12,9,7,0.18) 100%),
+    url('assets/foto-serv-01.jpeg') center 35%/cover no-repeat;
+}
+.hero-inner{position:relative;z-index:1;width:100%;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12.5px;letter-spacing:2.5px;color:var(--spark-2);
+  font-weight:700;margin-bottom:26px;text-transform:uppercase;
+}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--spark);}
+.hero h1{
+  font-size:clamp(52px, 9vw, 118px);
+  line-height:0.94;letter-spacing:0px;
+  max-width:820px;
+}
+.hero h1 .line{display:block;}
+.hero h1 .accent{color:var(--spark);}
+.hero-sub{
+  margin-top:30px;font-size:clamp(16px,1.6vw,19px);color:var(--muted);
+  max-width:470px;line-height:1.55;font-weight:500;
+}
+.hero-actions{display:flex;align-items:center;gap:18px;margin-top:46px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--spark);color:#0a0a0b;font-weight:700;font-size:14.5px;
+  padding:18px 32px;display:inline-flex;align-items:center;gap:10px;
+  letter-spacing:.5px;text-transform:uppercase;
+  transition:filter .2s, transform .2s;
+}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-2px);}
+.btn-outline{
+  border:1.5px solid rgba(255,255,255,0.3);color:var(--text);font-weight:700;font-size:14.5px;
+  padding:18px 32px;letter-spacing:.5px;text-transform:uppercase;
+  transition:border-color .2s, background .2s;
+}
+.btn-outline:hover{border-color:var(--text);background:rgba(255,255,255,0.06);}
+
+/* ---------- MARQUEE ---------- */
+.marquee-wrap{
+  background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:16px 0;overflow:hidden;white-space:nowrap;
+}
+.marquee{display:inline-flex;animation:scroll 32s linear infinite;}
+.marquee span{
+  font-family:'Anton',sans-serif;font-size:15px;letter-spacing:2px;
+  color:var(--muted-soft);text-transform:uppercase;padding:0 26px;display:inline-flex;align-items:center;gap:26px;
+}
+.marquee span::after{content:'◆';color:var(--spark);font-size:9px;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- SECTION SHARED ---------- */
+section{padding:130px 0;position:relative;}
+.section-head{max-width:640px;margin-bottom:60px;}
+.section-tag{
+  font-size:12.5px;letter-spacing:2.5px;color:var(--spark);font-weight:700;
+  text-transform:uppercase;margin-bottom:18px;display:block;
+}
+.section-head h2{font-size:clamp(32px,4.6vw,52px);line-height:1.02;letter-spacing:0px;}
+.section-head p{margin-top:20px;color:var(--muted);font-size:16px;line-height:1.6;font-weight:500;}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ---------- QUEM SOMOS ---------- */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:76px;align-items:center;}
+.about-photo{position:relative;}
+.about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;filter:saturate(1.05) contrast(1.05);}
+.about-badge{
+  position:absolute;bottom:-1px;right:-28px;background:var(--spark);color:#0a0a0b;
+  padding:26px 30px;max-width:190px;box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+.about-badge .num{font-size:44px;line-height:1;}
+.about-badge .lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:6px;}
+.about-body h2{font-size:clamp(28px,3.6vw,42px);line-height:1.08;margin-bottom:24px;}
+.about-body > p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:16px;max-width:520px;font-weight:500;}
+.check-list{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:14px;}
+.check-list li{display:flex;align-items:baseline;gap:14px;font-size:15.5px;color:var(--text);font-weight:600;}
+.check-list li::before{content:'◆';color:var(--spark);font-size:10px;flex-shrink:0;}
+.about-body .btn-primary{margin-top:36px;}
+
+/* ---------- SERVICES ---------- */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.service-card{
+  position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bg-card);
+  display:flex;align-items:flex-end;
+}
+.service-card img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;filter:saturate(1.05);
+}
+.service-card:hover img{transform:scale(1.08);}
+.service-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(10,8,6,0.96) 0%, rgba(10,8,6,0.55) 45%, rgba(10,8,6,0.05) 75%);
+}
+.service-body{position:relative;z-index:1;padding:26px 24px;}
+.service-num{font-family:'Anton',sans-serif;font-size:12px;color:var(--spark-2);letter-spacing:1px;margin-bottom:8px;display:block;}
+.service-card h3{font-size:19px;line-height:1.12;margin-bottom:10px;letter-spacing:0;}
+.service-card p{font-size:13.5px;color:#ddd8d2;line-height:1.5;font-weight:500;max-width:230px;}
+
+/* ---------- STATS / DIFERENCIAIS ---------- */
+.stats-section{
+  padding:0;position:relative;overflow:hidden;
+}
+.stats-bg{
+  position:absolute;inset:0;
+  background:url('assets/foto-serv-05-molde.jpeg') center 30%/cover no-repeat;
+  filter:saturate(0.3) brightness(0.5);
+}
+.stats-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(18,13,10,0.94) 0%, rgba(40,20,10,0.88) 50%, rgba(18,13,10,0.96) 100%);
+}
+.stats-inner{position:relative;z-index:1;padding:100px 0;}
+.stats-tag{text-align:center;font-size:12.5px;letter-spacing:2.5px;color:var(--spark-2);font-weight:700;text-transform:uppercase;margin-bottom:26px;display:block;}
+.stats-title{text-align:center;font-size:clamp(28px,4vw,44px);margin-bottom:70px;line-height:1.25;padding-top:6px;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-block{padding:0 30px;border-left:1px solid rgba(255,255,255,0.14);}
+.stat-block:first-child{border-left:none;}
+.stat-num{font-size:clamp(46px,5.5vw,64px);color:var(--text);line-height:1;display:flex;align-items:baseline;gap:4px;}
+.stat-num .suffix{font-size:0.45em;color:var(--spark-2);}
+.stat-rule{width:36px;height:3px;background:var(--spark);margin:18px 0 16px;}
+.stat-block h4{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:var(--text);margin-bottom:10px;}
+.stat-block p{font-size:13.5px;color:var(--muted);line-height:1.5;font-weight:500;}
+
+/* ---------- CLIENTES ---------- */
+.clients{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.clients-head{text-align:center;max-width:560px;margin:0 auto 54px;}
+.clients-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+.client-tile{
+  background:#fff;border-radius:10px;padding:22px 18px;
+  display:flex;align-items:center;justify-content:center;height:92px;
+}
+.client-tile img{max-height:46px;max-width:100%;width:auto;object-fit:contain;}
+
+/* ---------- HISTORIA ---------- */
+.historia{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.hist-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+.hist-year{font-size:clamp(90px,14vw,190px);color:transparent;
+  -webkit-text-stroke:1.5px var(--line);line-height:1;letter-spacing:-2px;}
+.hist-body h2{font-size:clamp(26px,3.6vw,38px);line-height:1.12;margin-bottom:22px;}
+.hist-body p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:16px;max-width:480px;font-weight:500;}
+.hist-body p strong{color:var(--text);font-weight:700;}
+
+/* ---------- CTA ---------- */
+.cta{text-align:center;}
+.cta h2{font-size:clamp(34px,6vw,66px);line-height:1.04;max-width:820px;margin:0 auto;}
+.cta h2 .accent{color:var(--spark);}
+.cta p{color:var(--muted);font-size:17px;margin:26px auto 0;max-width:440px;font-weight:500;}
+.cta-actions{display:flex;justify-content:center;gap:18px;margin-top:44px;flex-wrap:wrap;}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:90px;
+}
+.contact-item{background:var(--bg);padding:32px;text-align:left;}
+.contact-item .clabel{font-size:11.5px;letter-spacing:2px;color:var(--muted-soft);text-transform:uppercase;margin-bottom:10px;display:block;font-weight:700;}
+.contact-item a, .contact-item span.cval{font-size:16.5px;font-weight:700;color:var(--text);}
+.contact-item a:hover{color:var(--spark);}
+
+/* ---------- FOOTER ---------- */
+footer{padding:40px 0;border-top:1px solid var(--line);}
+.footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+footer .fmuted{color:var(--muted-soft);font-size:13px;}
+footer .flinks{display:flex;gap:24px;}
+footer .flinks a{color:var(--muted);font-size:13px;font-weight:600;transition:color .2s;}
+footer .flinks a:hover{color:var(--spark);}
+
+/* ---------- WHATSAPP FLOAT ---------- */
+.wa-float{
+  position:fixed;bottom:26px;right:26px;z-index:90;
+  width:56px;height:56px;border-radius:50%;background:var(--spark);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(232,84,42,0.4);
+  animation:pulse 2.6s infinite;
+}
+.wa-float svg{width:26px;height:26px;color:#0a0a0b;}
+@keyframes pulse{
+  0%,100%{box-shadow:0 8px 24px rgba(232,84,42,0.4);}
+  50%{box-shadow:0 8px 30px rgba(232,84,42,0.7);}
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:980px){
+  .nav-links{display:none;}
+  .nav-toggle{display:block;}
+  .about-grid{grid-template-columns:1fr;gap:64px;}
+  .about-photo img{aspect-ratio:16/10;}
+  .about-badge{right:16px;bottom:-24px;}
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:44px;}
+  .stat-block:nth-child(3){border-left:none;}
+  .clients-grid{grid-template-columns:repeat(3,1fr);}
+  .contact-grid{grid-template-columns:1fr;}
+  .hist-grid{grid-template-columns:1fr;gap:24px;}
+}
+@media (max-width:640px){
+  .container{padding:0 22px;}
+  section{padding:88px 0;}
+  .services-grid{grid-template-columns:1fr;}
+  .service-card{aspect-ratio:16/11;}
+  .stats-grid{grid-template-columns:1fr;row-gap:40px;}
+  .stat-block{border-left:none;padding:0;border-top:1px solid rgba(255,255,255,0.14);padding-top:28px;}
+  .stat-block:first-child{border-top:none;padding-top:0;}
+  .clients-grid{grid-template-columns:repeat(2,1fr);}
+  .hero h1{font-size:clamp(42px,13vw,64px);}
+  .about-badge{position:static;margin-top:16px;display:inline-block;}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container">
+    <nav>
+      <a href="/" aria-label="Usifer Ferramentaria" class="wordmark">USIFER<span>Ferramentaria</span></a>
+      <div class="nav-links">
+        <a href="#quemsomos">Quem somos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="https://wa.me/554734357163?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" class="nav-cta" target="_blank" rel="noopener">Solicitar orçamento</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Fechar menu">✕</button>
+  <a href="#quemsomos">Quem somos</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="https://wa.me/554734357163?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" target="_blank" rel="noopener" style="color:#E8542A;">WhatsApp</a>
+</div>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="eyebrow">Usinagem de precisão · Joinville-SC</span>
+    <h1><span class="line accent">Precisão</span><span class="line">desde</span><span class="line accent">2004.</span></h1>
+    <p class="hero-sub">Dispositivos, ferramental e usinagem técnica de precisão, com engenharia própria para o que sua produção exige.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/554734357163?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" class="btn-primary" target="_blank" rel="noopener">Solicitar orçamento</a>
+      <a href="#servicos" class="btn-outline">Ver serviços</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span><span>Dispositivos de Fixação</span><span>Ferramental para Tubos</span><span>Usinagem CNC</span><span>Controle de Qualidade RBC</span><span>Reafiação de Insertos</span><span>Medição 3D</span><span>Dispositivos de Fixação</span><span>Ferramental para Tubos</span><span>Usinagem CNC</span><span>Controle de Qualidade RBC</span><span>Reafiação de Insertos</span><span>Medição 3D</span></span>
+  </div>
+</div>
+
+<section id="quemsomos">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="assets/hero-galpao.jpeg" alt="Chão de fábrica da Usifer Ferramentaria">
+        <div class="about-badge">
+          <div class="num">20+</div>
+          <div class="lbl">Anos de indústria</div>
+        </div>
+      </div>
+      <div class="about-body reveal">
+        <span class="section-tag">Quem somos</span>
+        <h2>Referência em dispositivos e ferramental de precisão em Joinville.</h2>
+        <p>Desde a fundação em <strong>2004</strong>, a Usifer investe em tecnologia de última geração e na especialização da equipe para acompanhar as exigências do mercado e estar entre os líderes nacionais do segmento.</p>
+        <p>Com equipe de engenharia própria, desenvolvemos internamente soluções para a indústria metal mecânica, automotiva, de eletrodomésticos e de máquinas e implementos agrícolas.</p>
+        <ul class="check-list">
+          <li>Certificação RBC de rastreabilidade</li>
+          <li>Engenharia própria de desenvolvimento</li>
+          <li>650m² de área fabril com usinagem CNC</li>
+          <li>Clientes como Schulz, Renault e Nissan</li>
+        </ul>
+        <a href="https://wa.me/554734357163?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Usifer%20Ferramentaria" class="btn-primary" target="_blank" rel="noopener">Falar com a Usifer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">O que fazemos</span>
+      <h2>Precisão aplicada a cada etapa da sua produção.</h2>
+      <p>De dispositivos sob medida a ferramental completo — tudo desenvolvido pela nossa própria engenharia.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <img src="assets/foto-prod-03.jpeg" alt="Usinagem técnica de precisão">
+        <div class="service-body">
+          <span class="service-num">01</span>
+          <h3>Usinagem Técnica de Precisão</h3>
+          <p>Torneamento e fresamento 2D/3D CNC, retífica plana e cilíndrica, eletroerosão a fio e por penetração.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="assets/foto-prod-01.jpeg" alt="Ferramental para conformação de tubos">
+        <div class="service-body">
+          <span class="service-num">02</span>
+          <h3>Ferramental para Conformação de Tubos</h3>
+          <p>Curvar, expandir, conformar e estampar — para escapamentos, exaustão e móveis tubulares.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="assets/foto-prod-08.jpeg" alt="Dispositivos de fixação e montagem">
+        <div class="service-body">
+          <span class="service-num">03</span>
+          <h3>Dispositivos de Fixação e Montagem</h3>
+          <p>Fixação mecânica e hidráulica para centros CNC, com repetibilidade e rapidez de preparação.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="assets/foto-serv-06-vertical.jpeg" alt="Controle de qualidade e medição 3D">
+        <div class="service-body">
+          <span class="service-num">04</span>
+          <h3>Controle de Qualidade e Medição 3D</h3>
+          <p>Dispositivos GD&amp;T, calibradores, gages e berços para equipamentos de medição 3D, com certificação RBC.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="assets/foto-serv-04-cnc.jpeg" alt="Reafiação de insertos antirruga">
+        <div class="service-body">
+          <span class="service-num">05</span>
+          <h3>Reafiação de Insertos Antirruga</h3>
+          <p>Reafiação de insertos para curvadeiras de tubo, devolvendo precisão sem comprar peça nova.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="assets/foto-serv-02.jpeg" alt="Máquinas e equipamentos especiais">
+        <div class="service-body">
+          <span class="service-num">06</span>
+          <h3>Máquinas e Equipamentos Especiais</h3>
+          <p>Dispositivos de montagem, preparação para soldagem e manutenção/nacionalização de peças.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section" id="diferenciais">
+  <div class="stats-bg"></div>
+  <div class="stats-overlay"></div>
+  <div class="stats-inner">
+    <div class="container">
+      <span class="stats-tag reveal">Por que a Usifer</span>
+      <h2 class="stats-title reveal">Estrutura e rastreabilidade que a indústria exige.</h2>
+      <div class="stats-grid reveal">
+        <div class="stat-block">
+          <div class="stat-num">2004</div>
+          <div class="stat-rule"></div>
+          <h4>Fundação</h4>
+          <p>Mais de duas décadas desenvolvendo soluções de ferramentaria para a indústria.</p>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">20<span class="suffix">+</span></div>
+          <div class="stat-rule"></div>
+          <h4>Anos de indústria</h4>
+          <p>Experiência acumulada atendendo clientes de todos os portes e segmentos.</p>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num" style="font-size:clamp(32px,3.6vw,46px);">RBC</div>
+          <div class="stat-rule"></div>
+          <h4>Certificação</h4>
+          <p>Rastreabilidade certificada para dispositivos de controle de qualidade.</p>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num" style="font-size:clamp(32px,3.6vw,46px);">650m²</div>
+          <div class="stat-rule"></div>
+          <h4>Área fabril</h4>
+          <p>Estrutura própria em Pirabeiraba, com linha completa de máquinas CNC.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients">
+  <div class="container">
+    <div class="clients-head reveal">
+      <span class="section-tag">Quem confia na Usifer</span>
+      <h2 style="font-size:clamp(26px,3.4vw,36px);line-height:1.1;">Alguns dos nossos clientes</h2>
+    </div>
+    <div class="clients-grid reveal">
+      <div class="client-tile"><img src="assets/logo-cliente-01.png" alt="Schulz Compressores"></div>
+      <div class="client-tile"><img src="assets/logo-cliente-02-renault.png" alt="Renault"></div>
+      <div class="client-tile"><img src="assets/logo-cliente-03.png" alt="Nissan"></div>
+      <div class="client-tile"><img src="assets/logo-cliente-04.png" alt="Ciser"></div>
+      <div class="client-tile"><img src="assets/logo-cliente-05.png" alt="Nelson Global Products"></div>
+    </div>
+  </div>
+</section>
+
+<section class="historia" id="historia">
+  <div class="container">
+    <div class="hist-grid">
+      <div class="hist-year reveal">2004</div>
+      <div class="hist-body reveal">
+        <span class="section-tag">Nossa história</span>
+        <h2>Uma ferramentaria que cresceu investindo em tecnologia.</h2>
+        <p>Desde a fundação, a <strong>Usifer</strong> investe continuamente em tecnologia de última geração e na especialização da equipe — hoje com uma linha completa de centros de usinagem CNC, tornos, fresadoras, retíficas e eletroerosão.</p>
+        <p>O resultado é uma carteira de clientes que inclui nomes como <strong>Schulz, Renault e Nissan</strong> — fabricantes que não abrem mão de precisão e rastreabilidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <div class="container">
+    <span class="section-tag reveal">Fale com a Usifer</span>
+    <h2 class="reveal">Descreva seu projeto. A gente cuida <span class="accent">da precisão.</span></h2>
+    <p class="reveal">Resposta direta pelo WhatsApp, sem formulário e sem espera.</p>
+    <div class="cta-actions reveal">
+      <a href="https://wa.me/554734357163?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" class="btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+
+    <div class="contact-grid reveal">
+      <div class="contact-item">
+        <span class="clabel">Telefone / WhatsApp</span>
+        <a href="tel:+554734357163">+55 (47) 3435-7163</a>
+      </div>
+      <div class="contact-item">
+        <span class="clabel">E-mail</span>
+        <a href="mailto:comercial@usiferferramentaria.com.br">comercial@usiferferramentaria.com.br</a>
+      </div>
+      <div class="contact-item">
+        <span class="clabel">Localização</span>
+        <span class="cval">Pirabeiraba · Joinville/SC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-row">
+    <span class="wordmark">USIFER<span>Ferramentaria</span></span>
+    <div class="flinks">
+      <a href="mailto:comercial@usiferferramentaria.com.br">E-mail</a>
+    </div>
+    <span class="fmuted">© <span id="year"></span> Usifer Ferramentaria</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/554734357163?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.15L2 22l5.1-1.53a9.8 9.8 0 0 0 4.94 1.33h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.1h-.01a8.16 8.16 0 0 1-4.16-1.14l-.3-.18-3.09.93.93-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.37c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.16 8.16 0 0 1 2.41 5.81c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.79.96-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.37-1.7-.14-.24-.02-.37.11-.5.12-.12.25-.32.37-.48.12-.16.16-.28.24-.46.08-.19.04-.35-.04-.48-.08-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.56-.42-.15 0-.32-.01-.49-.01-.16 0-.44.06-.67.31-.23.25-.87.85-.87 2.06s.9 2.39 1.02 2.56c.13.16 1.75 2.67 4.25 3.64 2.5.97 2.5.65 2.95.6.45-.04 1.46-.6 1.66-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
+</a>
+
+<script>
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+navToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
